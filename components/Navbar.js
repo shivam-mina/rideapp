@@ -1,5 +1,4 @@
 import navStyles from "../styles/Navbar.module.css";
-import profilePic from "../img/download.jpg";
 
 const Navbar = ({ username, pic }) => {
   return (

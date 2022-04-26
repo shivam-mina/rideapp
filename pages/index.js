@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Options from "../components/Options";
 import styles from "../styles/index.module.css";
-import DropdownMenu from "../components/Dropdown";
 
 const date = new Date();
 const todayMonth = date.getMonth() + 1;
@@ -45,16 +44,13 @@ export default function Home({ rides, curr_user, modifiedRides }) {
     const date = r.date.substr(3, 2);
     return !(year <= todayYear && month <= 2 && date <= todayDate);
   });
-  const [upcomingRide, setUpcomingRide] = useState(upcoming);
-  const [pastRide, setpastRide] = useState(past);
-  const [nearestRide, setnearestRide] = useState(
-    modifiedRides.sort((a, b) => {
-      return a.distance - b.distance;
-    })
-  );
+  const upcomingRide = upcoming;
+  const pastRide = past;
+  const nearestRide = modifiedRides.sort((a, b) => {
+    return a.distance - b.distance;
+  });
   const [selected, setSelected] = useState("Nearest Ride");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+
   const setUpcoming = () => {
     setSelected("Upcoming Ride");
   };
@@ -64,25 +60,7 @@ export default function Home({ rides, curr_user, modifiedRides }) {
   const setNearest = () => {
     setSelected("Nearest Ride");
   };
-  useEffect(() => {
-    if (city !== "" && state != "") {
-      setUpcomingRide(
-        upcomingRide.filter((ride) => {
-          ride.state === state && ride.city === city;
-        })
-      );
-      setnearestRide(
-        nearestRide.filter((ride) => {
-          ride.state === state && ride.city === city;
-        })
-      );
-      setpastRide(
-        pastRide.filter((ride) => {
-          ride.state === state && ride.city === city;
-        })
-      );
-    }
-  }, [city, state]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -99,9 +77,6 @@ export default function Home({ rides, curr_user, modifiedRides }) {
           upcomingRideCount={upcoming.length}
           pastRideCount={past.length}
         />
-        {/* <div style={{ textAlign: "end" }}>
-          <DropdownMenu setCity={setCity} setState={setState} />
-        </div> */}
       </div>
       {selected === "Upcoming Ride" && upcomingRide.map(createCard)}
       {selected === "Past Ride" && pastRide.map(createCard)}
@@ -141,12 +116,3 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-// export const getCity = async () => {
-//   const res = await fetch(`https://assessment.api.vweb.app/rides`);
-//   const rides = await res.json();
-
-//   return {
-//     props: { city: rides.city, state: rides.state },
-//   };
-// };
