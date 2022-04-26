@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.nav {
+  width: 100%;
+  height: 64px;
+  left: 0px;
+  top: 0px;
+  background: rgb(41, 41, 41);
+  display: flex;
+}
+.option {
+  background-color: rgb(41, 41, 41);
+  border: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  margin-right: 20px;
+  margin-left: 10px;
+  color: #d0cbcb;
+}
+.option1 {
+  background-color: rgb(41, 41, 41);
+  border: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  margin-right: 20px;
+  margin-left: 10px;
+  color: #d0cbcb;
+}
+
+.filters {
+  background-color: rgb(41, 41, 41);
+  border: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 20px;
+  margin-left: 10px;
+  color: #870101;
+}
+.selected {
+  border-bottom: 2px solid #d0cbcb;
+  font-weight: bolder;
+}
